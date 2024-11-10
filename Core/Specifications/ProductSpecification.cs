@@ -9,6 +9,7 @@ public class ProductSpecification : BaseSpecification<Product>
   (specParams.Brands.Count == 0 || specParams.Brands.Contains(x.Brand)) && 
   (specParams.Types.Count == 0 || specParams.Types.Contains(x.Type)))
   {
+    ApplyPagging(specParams.PageSize * (specParams.PageIndex - 1), specParams.PageSize);
       switch (specParams.Sort)
     {
         case "priceAsc":
