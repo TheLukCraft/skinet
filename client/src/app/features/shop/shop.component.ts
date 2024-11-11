@@ -36,14 +36,14 @@ import { FormsModule } from '@angular/forms';
 export class ShopComponent implements OnInit {
   private shopService = inject(ShopService);
   private dialogService = inject(MatDialog);
-  products?: Pagination<Product>
+  products?: Pagination<Product>;
   sortOptions = [
     {name: 'Alphabetical', value: 'name'},
     {name: 'Price: Low to High', value: 'priceAsc'},
     {name: 'Price: High to Low', value: 'priceDesc'}
   ]
   shopParams = new ShopParams();
-  pageSizeOptions = [5, 10, 15, 20];
+  pageSizeOptions = [5,10,15,20];
 
 
   ngOnInit(): void {
