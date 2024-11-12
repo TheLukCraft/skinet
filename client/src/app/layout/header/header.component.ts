@@ -1,3 +1,4 @@
+import { CartService } from './../../core/services/cart.service';
 import { BusyService } from './../../core/services/busy.service';
 import { Component, inject } from '@angular/core';
 import { MatBadge } from '@angular/material/badge';
@@ -21,5 +22,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  BusyService = inject(BusyService)
+  BusyService = inject(BusyService);
+  CartService = inject(CartService);
 }
