@@ -12,4 +12,5 @@ import { OrderSummaryComponent } from "../../shared/components/order-summary/ord
 })
 export class CartComponent {
   CartService = inject(CartService);
+  
 }
