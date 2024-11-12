@@ -14,6 +14,7 @@ import { MatButton } from '@angular/material/button';
 export class TestErrorComponent {
   baseUrl = 'https://localhost:5001/api/';
   private http = inject(HttpClient);
+  validationErrors?: string[];
 
   get404Error() {
     this.http.get(this.baseUrl + 'buggy/not-found').subscribe({
@@ -44,9 +45,9 @@ export class TestErrorComponent {
   }
 
   get400ValidationError() {
-    this.http.post(this.baseUrl + 'buggy/validation-error', {}).subscribe({
+    this.http.post(this.baseUrl + 'buggy/validationerror', {}).subscribe({
       next: response => console.log(response),
-      error: error => console.log(error)
+      error: error => this.validationErrors = error
     })
   }
 }
