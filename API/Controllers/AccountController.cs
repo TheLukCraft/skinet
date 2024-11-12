@@ -1,11 +1,9 @@
-using System.Security.Claims;
 using API.DTOs;
 using API.Extensions;
 using Core.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
@@ -24,7 +22,15 @@ public class AccountController(SignInManager<AppUser> signInManager) : BaseApiCo
 
         var result = await signInManager.UserManager.CreateAsync(user, registerDto.Password);
 
-        if (!result.Succeeded) return BadRequest(result.Errors);
+        if (!result.Succeeded) 
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(error.Code, error.Description);
+            }
+
+            return ValidationProblem();
+        }
 
         return Ok();
     }
