@@ -30,7 +30,7 @@ export class TestErrorComponent {
   }
 
   get401Error() {
-    this.http.get(this.baseUrl + 'buggy/unauthorised').subscribe({
+    this.http.get(this.baseUrl + 'buggy/unauthorized').subscribe({
       next: response => console.log(response),
       error: error => console.log(error)
     })
