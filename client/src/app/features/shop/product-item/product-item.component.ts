@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { CartService } from './../../../core/services/cart.service';
+import { Component, inject, Input } from '@angular/core';
 import { Product } from '../../../shared/models/product';
 import { MatCard, MatCardActions, MatCardContent } from '@angular/material/card';
 import { CurrencyPipe } from '@angular/common';
@@ -20,5 +21,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './product-item.component.scss'
 })
 export class ProductItemComponent {
-  @Input() product?: Product
+  @Input() product?: Product;
+  CartService = inject(CartService);
 }
